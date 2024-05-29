@@ -1,0 +1,8 @@
+_target_: srcs.data_loader.get_dataloaders
+data_dir: ${hydra:runtime.cwd}/data/full_${sampling}_data.fasta
+val_size: 0.1
+k: ${kmer}
+max_len: 81
+seq_type: dna
+batch_size: ${batch_size}
+num_parallel_workers: 1
