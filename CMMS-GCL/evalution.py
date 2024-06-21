@@ -1,10 +1,10 @@
 import numpy as np
-import torch
+import mindspore.ops as ops
 from sklearn.metrics import  roc_auc_score,accuracy_score, precision_score, recall_score,matthews_corrcoef
 
 def metric(label,output):
 
-    zs = torch.sigmoid(output).to('cpu').data.numpy()
+    zs = ops.sigmoid(output).to('cpu').data.numpy()
     # print(zs.shape)
     ts = label.to('cpu').data.numpy()
     # print(ts.shape)

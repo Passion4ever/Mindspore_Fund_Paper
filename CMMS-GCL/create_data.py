@@ -94,7 +94,7 @@ for smile in compound_iso_smiles:
     g = smile_to_graph(smile)
     smile_graph[smile] = g
 
-# convert to PyTorch data format
+# convert to mindspore data format
 processed_train = 'data/processed/' + 'train.pt'
 processed_test = 'data/processed/' + 'test.pt'
 if ((not os.path.isfile(processed_train)) or (not os.path.isfile(processed_test))):
@@ -110,11 +110,11 @@ if ((not os.path.isfile(processed_train)) or (not os.path.isfile(processed_test)
 
     test_Y = np.array(pd.DataFrame(df['Label'])).tolist()
 
-    # make data PyTorch Geometric ready
-    print('preparing,' + 'train.pt in pytorch format!')
+    # make data mindspore Geometric ready
+    print('preparing,' + 'train.pt in mindspore format!')
     train_data = TestbedDataset(root='data', dataset='train', xd=train_compounds, y=train_Y,
                                 smile_graph=smile_graph)
-    print('preparing,' + 'test.pt in pytorch format!')
+    print('preparing,' + 'test.pt in mindspore format!')
     test_data = TestbedDataset(root='data', dataset= 'test', xd=test_compounds, y=test_Y,
                                smile_graph=smile_graph)
     print(processed_train, ' and ', processed_test, ' have been created')
